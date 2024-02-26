@@ -7,11 +7,11 @@
         <div class="card">
             <div class="card-header">
                 <h3>Tambahkan Kategori
-                    <a href="{{ url('admin/category') }}" class="btn btn-rounded btn-primary text-white btn-sm float-end">BACK</a>
+                    <a href="{{ url('admin/category') }}" class="btn btn-rounded btn-danger text-white btn-sm float-end">BACK</a>
                 </h3>
             </div>
             <div class="card-body">
-                <form action="{{ url('admin/category') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/category/') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row">
@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Status</label><br />
-                            <input type="checkbox" name="status" />
+                            <input type="checkbox" name="status" style="width: 20px; height: 20px;" />
                         </div>
 
 

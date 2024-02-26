@@ -53,8 +53,8 @@
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->status == '1' ? 'Hidden':'Visible' }}</td>
                                 <td>
-                                    <a href="{{ url('admin/category/'.$category->id.'/edit') }}" class="btn btn-primary">Edit</a>
-                                    <a href="#" wire:click="deleteCategory({{ $category->id }})" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger">Delete</a>
+                                    <a href="{{ url('admin/category/'.$category->id.'/edit') }}" class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="#" wire:click="deleteCategory({{ $category->id }})" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-header">
                 <h3>Edit Kategori
-                    <a href="{{ url('admin/category') }}" class="btn btn-rounded btn-primary text-white btn-sm float-end">BACK</a>
+                    <a href="{{ url('admin/category') }}" class="btn btn-rounded btn-danger text-white btn-sm float-end">BACK</a>
                 </h3>
             </div>
             <div class="card-body">
@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Status</label><br />
-                            <input type="checkbox" name="status" {{ $category->status == '1' ? 'checked':'' }} />
+                            <input type="checkbox" name="status" style="width: 20px; height: 20px;" {{ $category->status == '1' ? 'checked':'' }} />
                             @error('status') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
 
