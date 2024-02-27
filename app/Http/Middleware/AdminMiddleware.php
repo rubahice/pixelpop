@@ -18,7 +18,7 @@ class AdminMiddleware
     {
         if(!Auth::user()->role_as == '1'){
 
-            return redirect('/home')->with('status','Akses ditolak. Kamu bukan Admin');
+            return redirect('/home')->with('message','Akses ditolak. Kamu bukan Admin');
         }
 
         return $next($request);
