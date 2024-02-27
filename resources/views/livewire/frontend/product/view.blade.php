@@ -10,10 +10,10 @@
             <div class="row">
                 <div class="col-md-5 mt-3">
                     <div class="bg-white border">
-                        @if($product->productImages)
-                        <img src="{{ asset($product->productImages[0]->image) }}" class="w-100" alt="Img">
+                        @if ($product->productImages)
+                            <img src="{{ asset($product->productImages[0]->image) }}" class="w-100" alt="Img">
                         @else
-                        No Image Added
+                            No Image Added
                         @endif
                     </div>
                 </div>
@@ -31,32 +31,34 @@
                             <span class="original-price">Rp. {{ number_format($product->original_price) }}</span>
                         </div>
                         <div>
-                            @if($product->productColors->count() > 0)
-                                @if($product->productColors)
+                            @if ($product->productColors->count() > 0)
+                                @if ($product->productColors)
                                     @foreach ($product->productColors as $colorItem)
                                         {{-- <input type="radio" name="colorSelection" value="{{ $colorItem->id }}" /> {{ $colorItem->color->name }} --}}
-                                        <label class="colorSelectionLabel" style="background-color: {{ $colorItem->color->code }}"
-                                            wire:click="colorSelected({{ $colorItem->id }})"
-                                            >
+                                        <label class="colorSelectionLabel"
+                                            style="background-color: {{ $colorItem->color->code }}"
+                                            wire:click="colorSelected({{ $colorItem->id }})">
                                             {{ $colorItem->color->name }}
                                         </label>
                                     @endforeach
                                 @endif
 
                                 <div>
-                                    @if($this->prodColorSelectedQuantity == 'outOfStock')
-                                        <label class="btn-sm py-1 mt-2 px-2 rounded-3 text-white bg-danger">Out of Stock</label>
+                                    @if ($this->prodColorSelectedQuantity == 'outOfStock')
+                                        <label class="btn-sm py-1 mt-2 px-2 rounded-3 text-white bg-danger">Out of
+                                            Stock</label>
                                     @elseif($this->prodColorSelectedQuantity > 0)
-                                        <label class="btn-sm py-1 mt-2 px-2 rounded-3 text-white bg-success">In Stock</label>
+                                        <label class="btn-sm py-1 mt-2 px-2 rounded-3 text-white bg-success">In
+                                            Stock</label>
                                     @endif
                                 </div>
-
                             @else
-
                                 @if ($product->quantity)
-                                    <label class="btn-sm py-1 mt-2 px-2 rounded-3 text-white bg-success">In Stock</label>
+                                    <label class="btn-sm py-1 mt-2 px-2 rounded-3 text-white bg-success">In
+                                        Stock</label>
                                 @else
-                                    <label class="btn-sm py-1 mt-2 px-2 rounded-3 text-white bg-danger">Out of Stock</label>
+                                    <label class="btn-sm py-1 mt-2 px-2 rounded-3 text-white bg-danger">Out of
+                                        Stock</label>
                                 @endif
 
                             @endif
