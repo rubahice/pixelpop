@@ -59,6 +59,7 @@
                             @endif
 
                         @empty
+                            <hr>
                             <h4>No Wishlist Added</h4>
                         @endforelse
 

@@ -12,13 +12,13 @@ class WishlistShow extends Component
     public function removeWishlishItem(int $wishlistId)
     {
         Wishlist::where('user_id', auth()->user()->id)->where('id',$wishlistId)->delete();
-
+            $this->dispatch('wishlistUpdated')->to(WishlistCount::class);
             $this->alert('success', 'Berhasil', [
                 'position' => 'top-end',
                 'timer' => 3000,
                 'toast' => true,
                 'text' => 'Wishlist Item Berhasil Remove',
-                'background' => '#CDFADB',
+                // 'background' => '#CDFADB',
             ]);
     }
 

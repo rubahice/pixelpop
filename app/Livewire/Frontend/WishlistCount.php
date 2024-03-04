@@ -5,10 +5,16 @@ namespace App\Livewire\Frontend;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class WishlistCount extends Component
 {
     public $wishlistCount;
+
+    #[On('wishlistUpdated')]
+    public function refresh()
+    {
+    }
 
     public function checkWishlistCount()
     {
