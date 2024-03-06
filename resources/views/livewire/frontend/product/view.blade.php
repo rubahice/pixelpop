@@ -74,9 +74,12 @@
                             </div>
                         </div>
                         <div class="mt-2">
-                            
+
                             <button type="button" wire:click="addToCart({{ $product->id }})" class="btn btn1">
-                                <i class="fa fa-shopping-cart"></i>Add To Cart
+                                <span wire:loading.remove wire:target="addToCart">
+                                    <i class="fa fa-shopping-cart"></i>Add To Cart
+                                </span>
+                                <span wire:loading wire:target="addToCart">Menambahkan...</span>
                             </button>
 
 

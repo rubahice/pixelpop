@@ -50,5 +50,10 @@ class FrontendController extends Controller
         }
     }
 
+    public function terimakasih()
+    {
+        return view('frontend.terima-kasih');
+    }
+
 
 }

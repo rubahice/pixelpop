@@ -9,52 +9,29 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class CartShow extends Component
 {
     use LivewireAlert;
-    public $cart;
+    public $cart, $totalPrice = 0;
 
     public function decrementQuantity(int $cartId)
     {
         $cartData = Cart::where('id',$cartId)->where('user_id', auth()->user()->id)->first();
         if($cartData)
         {
-            if($cartData->productColor()->where('id',$cartData->product_color_id)->exists()){
+            if($cartData->quantity > 1){
 
-                $productColor = $cartData->productColor()->where('id',$cartData->product_color_id)->first();
-                if($productColor->quantity > $cartData->quantity){
-
-                    $cartData->decrement('quantity');
-                    $this->alert('success', 'Update', [
-                        'position' => 'top-end',
-                        'timer' => 3000,
-                        'toast' => true,
-                        'text' => 'Quantity Update',
-                    ]);
-                } else {
-                    $this->alert('warning', 'Tidak Tersedia', [
-                        'position' => 'top-end',
-                        'timer' => 3000,
-                        'toast' => true,
-                        'text' => 'Hanya '.$productColor->quantity.' Jumlah yang Tersedia',
-                    ]);
-                }
+                $cartData->decrement('quantity');
+                $this->alert('success', 'Update', [
+                    'position' => 'top-end',
+                    'timer' => 3000,
+                    'toast' => true,
+                    'text' => 'Quantity Update',
+                ]);
             } else {
-
-                if($cartData->product->quantity > $cartData->quantity) {
-
-                    $cartData->decrement('quantity');
-                    $this->alert('success', 'Update', [
-                        'position' => 'top-end',
-                        'timer' => 3000,
-                        'toast' => true,
-                        'text' => 'Quantity Update',
-                    ]);
-                } else {
-                    $this->alert('warning', 'Tidak Tersedia', [
-                        'position' => 'top-end',
-                        'timer' => 3000,
-                        'toast' => true,
-                        'text' => 'Hanya '.$cartData->product->quantity.' Jumlah yang Tersedia',
-                    ]);
-                }
+                $this->alert('warning', 'Warning', [
+                    'position' => 'top-end',
+                    'timer' => 3000,
+                    'toast' => true,
+                    'text' => 'Tidak Boleh Kurang Dari 1',
+                ]);
             }
 
         } else {
@@ -114,6 +91,30 @@ class CartShow extends Component
                 }
             }
 
+        } else {
+
+            $this->alert('error', 'Error', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'text' => 'Ada Yang Salah',
+            ]);
+        }
+    }
+
+    public function removeCartItem(int $cartId)
+    {
+        $cartRemoveData = Cart::where('user_id', auth()->user()->id)->where('id',$cartId)->first();
+        if($cartRemoveData){
+            $cartRemoveData->delete();
+
+            $this->dispatch('CartAddedUpdated');
+            $this->alert('success', 'success', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'text' => 'Cart Item Berhasil Remove',
+            ]);
         } else {
 
             $this->alert('error', 'Error', [
