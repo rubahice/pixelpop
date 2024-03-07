@@ -13,6 +13,8 @@ class CheckoutShow extends Component
 {
     use LivewireAlert;
 
+    public $snapToken;
+
     public $carts, $totalProductAmount = 0;
 
     public $fullname, $email, $phone, $pincode, $address, $payment_mode = NULL, $payment_id = NULL;

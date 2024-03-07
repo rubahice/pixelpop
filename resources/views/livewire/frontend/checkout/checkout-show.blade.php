@@ -52,7 +52,7 @@
                                 <textarea wire:model.defer="address" id="address" class="form-control" rows="2"></textarea>
                                 @error ('address') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-12 mb-3"  wire:ignore>
                                 <label>Select Payment Mode: </label>
                                 <div class="d-md-flex align-items-start">
                                     <div class="nav col-md-3 flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -76,8 +76,10 @@
                                         <div class="tab-pane fade" id="onlinePayment" role="tabpanel" aria-labelledby="onlinePayment-tab" tabindex="0">
                                             <h6>Online Payment Mode</h6>
                                             <hr/>
-                                            <div wire:ignore>
+                                            <div>
                                                 <button type="button" class="btn btn-warning" id="pay-button">Pay Now (Online Payment)</button>
+                                                <!-- @TODO: You can add the desired ID as a reference for the embedId parameter. -->
+                                                <div id="snap-container"></div>
                                                 {{-- <button id="pay-button">Pay</button> --}}
                                             </div>
                                         </div>
@@ -105,17 +107,73 @@
 
 @push('scripts')
 
-    <script type="text/javascript"
+    <script src="https://app.sandbox.midtrans.com/snap/v1/transactions" data-client-key="SB-Mid-client-DGhaO9EYNB8ZHaeY"></script>
+
+    {{-- <script type="text/javascript"
     src="https://app.sandbox.midtrans.com/snap/snap.js"
-    data-client-key="<SB-Mid-client-DGhaO9EYNB8ZHaeY>"></script>
+    data-client-key="SB-Mid-client-DGhaO9EYNB8ZHaeY"></script> --}}
 
     <script type="text/javascript">
 
+    // Set your Merchant Server Key
+    \Midtrans\Config::$serverKey = 'SB-Mid-server-Yj3LT4SBstmYoXQ6N31iDTum';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => 10000,
+            ),
+            'customer_details' => array(
+                'first_name' => 'budi',
+                'last_name' => 'pratama',
+                'email' => 'budi.pra@example.com',
+                'phone' => '08111222333',
+            ),
+        );
+
+        $this->$snapToken = \Midtrans\Snap::getSnapToken($params);
+        dd($snapToken);
+
+        // For example trigger on button clicked, or any time you need
     var payButton = document.getElementById('pay-button');
     payButton.addEventListener('click', function () {
-        snap.pay('<SNAP_TOKEN>');
+
+    // coba coba aja awal
+    // if(!document.getElementById('fullname').value
+    //     || !document.getElementById('phone').value
+    //     || !document.getElementById('email').value
+    //     || !document.getElementById('pincode').value
+    //     || !document.getElementById('address').value
+
+    // )
+    // {
+    //     livewire.disparts('validationForAll');
+    //     return false;
+    // } else {
+
+    //     @this.set('fullname', document.getElementById('fullname').value);
+    //     @this.set('email', document.getElementById('email').value);
+    //     @this.set('phone', document.getElementById('phone').value);
+    //     @this.set('pincode', document.getElementById('pincode').value);
+    //     @this.set('address', document.getElementById('address').value);
+
+    // }
+    // coba coba aja akhir
+
+
+      // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token.
+      // Also, use the embedId that you defined in the div above, here.
+      window.snap.embed('${snapToken}', {
+        embedId: 'snap-container'
+      });
     });
-    </script>
+  </script>
 
 @endpush
 
