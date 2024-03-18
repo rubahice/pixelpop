@@ -7,9 +7,9 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ url('admin/orders') }}">
           <i class="mdi mdi-sale menu-icon"></i>
-          <span class="menu-title">Sales</span>
+          <span class="menu-title">Orderan</span>
         </a>
       </li>
       <li class="nav-item">
@@ -26,7 +26,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#products" aria-expanded="false" aria-controls="product">
+        <a class="nav-link" data-bs-toggle="collapse" href="#products" aria-expanded="false" aria-controls="products">
           <i class="mdi mdi-plus-circle menu-icon"></i>
           <span class="menu-title">Produk</span>
           <i class="menu-arrow"></i>
@@ -58,11 +58,8 @@
         </a>
         <div class="collapse" id="user">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/users/create') }}"> Add User </a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/users') }}"> View Users </a></li>
           </ul>
         </div>
       </li>
@@ -73,9 +70,9 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ url('admin/settings') }}">
           <i class="mdi mdi-settings menu-icon"></i>
-          <span class="menu-title">Setting Side</span>
+          <span class="menu-title">Site Setting</span>
         </a>
       </li>
     </ul>

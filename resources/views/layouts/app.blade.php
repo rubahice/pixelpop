@@ -22,11 +22,20 @@
     <script src="https://kit.fontawesome.com/4c001451ce.js" crossorigin="anonymous"></script>
 
     <!-- Logo -->
-    {{-- <link rel="logo" href="{{ asset('assets/image/PIXELPOPS1') }}" /> --}}
+    <link rel="logo" href="{{ asset('assets/image/pixelpop.png') }}" />
+    {{-- <link rel="shortcut icon" href="{{ asset('admin/images/PIXELPOP.png') }}" /> --}}
 
     <!-- links -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+
+    {{-- Owl Carousel --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
+
+    {{-- Exzoom - Prod Image --}}
+    <link rel="stylesheet" href="{{ asset('assets/exzoom/jquery.exzoom.css') }}">
+
 
     @livewireStyles
 </head>
@@ -39,7 +48,11 @@
         <main>
             @yield('content')
         </main>
+
+        @include('layouts.inc.frontend.footer')
+
     </div>
+
 
     <!-- Scripts -->
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
@@ -51,6 +64,12 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <x-livewire-alert::scripts />
+
+    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+    @yield('script')
+
+    <script src="{{ asset('assets/exzoom/jquery.exzoom.js') }}"></script>
+
 </body>
 
 </html>
