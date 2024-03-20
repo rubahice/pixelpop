@@ -190,5 +190,11 @@
         Thank your for shopping with {{ config('app.name') }}
     </p>
 
+    Hubungi Kami:
+    {{ $appSetting->phone1 ?? 'phone 1' }}
+    @if ($appSetting->whatsapp)
+        <a href="{{ $appSetting->whatsapp }}" target="_blank"><i class="fa fa-whatsapp"></i></a>
+    @endif
+
 </body>
 </html>

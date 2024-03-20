@@ -81,8 +81,8 @@ class OrderController extends Controller
 
     public function mailInvoice(int $orderId)
     {
-        $order = Order::findOrFail($orderId);
         try{
+            $order = Order::findOrFail($orderId);
 
             Mail::to("$order->email")->send(new InvoiceOrderMailable($order));
             return redirect('admin/orders/'.$orderId)->with('message','Invoice Mail has been sent to '.$order->email);
@@ -94,14 +94,14 @@ class OrderController extends Controller
 
     }
 
-    public function whatsappInvoice(int $orderId)
-    {
-        $order = Order::findOrFail($orderId);
-        $data = ['order' => $order];
+    // public function whatsappInvoice(int $orderId)
+    // {
+    //     $order = Order::findOrFail($orderId);
+    //     $data = ['order' => $order];
 
-        $pdf = Pdf::loadView('admin.invoice.generate-invoice', $data);
+    //     $pdf = Pdf::loadView('admin.invoice.generate-invoice', $data);
 
-        $todayDate = Carbon::now()->format('d-m-Y');
-        return $pdf->download('invoice-'.$order->id.'-'.$todayDate.'.pdf');
-    }
+    //     $todayDate = Carbon::now()->format('d-m-Y');
+    //     return $pdf->download('invoice-'.$order->id.'-'.$todayDate.'.pdf');
+    // }
 }

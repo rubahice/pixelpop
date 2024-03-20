@@ -12,16 +12,16 @@
           <span class="menu-title">Orderan</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#category" aria-expanded="false" aria-controls="category">
+      <li class="nav-item {{ Request::is('admin/category*') ? 'active':'' }}">
+        <a class="nav-link" data-bs-toggle="collapse" href="#category" aria-expanded="{{ Request::is('admin/category*') ? 'true':'false' }}" aria-controls="category">
           <i class="mdi mdi-view-list menu-icon"></i>
           <span class="menu-title">Kategori</span>
           <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="category">
+        <div class="collapse {{ Request::is('admin/category*') ? 'show':'' }}" id="category">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/category/create') }}">Tambahkan Kategori</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/category') }}">Lihat Kategori</a></li>
+            <li class="nav-item"> <a class="nav-link {{ Request::is('admin/category/create') ? 'active':'' }}" href="{{ url('admin/category/create') }}">Tambahkan Kategori</a></li>
+            <li class="nav-item"> <a class="nav-link {{ Request::is('admin/category') || Request::is('admin/category/*/edit')  ? 'active':'' }}" href="{{ url('admin/category') }}">Lihat Kategori</a></li>
           </ul>
         </div>
       </li>

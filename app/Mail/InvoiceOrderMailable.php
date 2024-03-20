@@ -27,7 +27,7 @@ class InvoiceOrderMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Invoice Order Mailable',
+            subject: 'Your Order Invoice',
         );
     }
 
@@ -37,7 +37,7 @@ class InvoiceOrderMailable extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'admin.invoice.generate-invoice',
         );
     }
 
@@ -52,10 +52,10 @@ class InvoiceOrderMailable extends Mailable
     }
 
     // dibawah ini yang david tambahkan
-    public function build()
-    {
-        $subject = "Your Order Invoice";
-        return $this->subject($subject)
-                    ->view('admin.invoice.generate-invoice');
-    }
+    // public function build()
+    // {
+    //     $subject = "Your Order Invoice";
+    //     return $this->subject($subject)
+    //                 ->view('admin.invoice.generate-invoice');
+    // }
 }
