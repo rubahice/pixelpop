@@ -107,42 +107,43 @@
 
 @push('scripts')
 
-    <script src="https://app.sandbox.midtrans.com/snap/v1/transactions" data-client-key="SB-Mid-client-DGhaO9EYNB8ZHaeY"></script>
-
-    {{-- <script type="text/javascript"
-    src="https://app.sandbox.midtrans.com/snap/snap.js"
-    data-client-key="SB-Mid-client-DGhaO9EYNB8ZHaeY"></script> --}}
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
 
     <script type="text/javascript">
 
-    // Set your Merchant Server Key
-    \Midtrans\Config::$serverKey = 'SB-Mid-server-Yj3LT4SBstmYoXQ6N31iDTum';
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        \Midtrans\Config::$isProduction = false;
-        // Set sanitization on (default)
-        \Midtrans\Config::$isSanitized = true;
-        // Set 3DS transaction for credit card to true
-        \Midtrans\Config::$is3ds = true;
+        document.getElementById('pay-button').onclick = function(){
+                // SnapToken acquired from previous step
+                snap.pay($snapToken, {
+                // Optional
+                $snapToken = \Midtrans\Snap::getSnapToken($params);
+                // dd($snapToken);
+                });
+            };
 
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => rand(),
-                'gross_amount' => 10000,
-            ),
-            'customer_details' => array(
-                'first_name' => 'budi',
-                'last_name' => 'pratama',
-                'email' => 'budi.pra@example.com',
-                'phone' => '08111222333',
-            ),
-        );
 
-        $this->$snapToken = \Midtrans\Snap::getSnapToken($params);
-        dd($snapToken);
+
+    //     document.getElementById('pay-button').onclick = function(){
+    //     // SnapToken acquired from previous step
+    //     snap.pay('<?=$snapToken?>', {
+    //       // Optional
+    //       onSuccess: function(result){
+    //         /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+    //       },
+    //       // Optional
+    //       onPending: function(result){
+    //         /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+    //       },
+    //       // Optional
+    //       onError: function(result){
+    //         /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+    //       }
+    //     });
+    //   };
+
 
         // For example trigger on button clicked, or any time you need
-    var payButton = document.getElementById('pay-button');
-    payButton.addEventListener('click', function () {
+    // var payButton = document.getElementById('pay-button');
+    // payButton.addEventListener('click', function () {
 
     // coba coba aja awal
     // if(!document.getElementById('fullname').value
@@ -169,10 +170,10 @@
 
       // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token.
       // Also, use the embedId that you defined in the div above, here.
-      window.snap.embed('${snapToken}', {
-        embedId: 'snap-container'
-      });
-    });
+    //   window.snap.embed($snapToken, {
+    //     embedId: 'snap-container'
+    //   });
+    // });
   </script>
 
 @endpush

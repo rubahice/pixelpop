@@ -25,16 +25,16 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#products" aria-expanded="false" aria-controls="products">
+      <li class="nav-item {{ Request::is('admin/products*') ? 'active':'' }}">
+        <a class="nav-link" data-bs-toggle="collapse" href="#products" aria-expanded="{{ Request::is('admin/products*') ? 'true':'false' }}" aria-controls="products">
           <i class="mdi mdi-plus-circle menu-icon"></i>
           <span class="menu-title">Produk</span>
           <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="products">
+        <div class="collapse {{ Request::is('admin/products*') ? 'show':'' }}" id="products">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/products/create') }}">Tambahkan Produk</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/products') }}">Lihat Produk</a></li>
+            <li class="nav-item"> <a class="nav-link {{ Request::is('admin/products/create') ? 'active':'' }}" href="{{ url('admin/products/create') }}">Tambahkan Produk</a></li>
+            <li class="nav-item"> <a class="nav-link {{ Request::is('admin/products') || Request::is('admin/products/*/edit')  ? 'active':'' }}" href="{{ url('admin/products') }}">Lihat Produk</a></li>
           </ul>
         </div>
       </li>
@@ -50,16 +50,16 @@
           <span class="menu-title">Colors</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#user" aria-expanded="false" aria-controls="user">
+      <li class="nav-item {{ Request::is('admin/user*') ? 'active':'' }}">
+        <a class="nav-link" data-bs-toggle="collapse" href="#user" aria-expanded="{{ Request::is('admin/user*') ? 'true':'false' }}" aria-controls="user">
           <i class="mdi mdi-account menu-icon"></i>
           <span class="menu-title">Users</span>
           <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="user">
+        <div class="collapse {{ Request::is('admin/user*') ? 'show':'' }}" id="user">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/users/create') }}"> Add User </a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/users') }}"> View Users </a></li>
+            <li class="nav-item"> <a class="nav-link {{ Request::is('admin/user/create') ? 'active':'' }}" href="{{ url('admin/users/create') }}"> Add User </a></li>
+            <li class="nav-item"> <a class="nav-link {{ Request::is('admin/user') || Request::is('admin/user/*/edit')  ? 'active':'' }}" href="{{ url('admin/users') }}"> View Users </a></li>
           </ul>
         </div>
       </li>

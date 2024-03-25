@@ -60,16 +60,16 @@
 
     <!-- Sweetalert -->
     @livewireScripts
-    @stack('scripts')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <x-livewire-alert::scripts />
 
     <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-    @yield('script')
 
     <script src="{{ asset('assets/exzoom/jquery.exzoom.js') }}"></script>
 
+    @stack('scripts')
+    @yield('script')
 </body>
 
 </html>

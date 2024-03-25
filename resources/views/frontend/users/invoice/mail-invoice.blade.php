@@ -80,6 +80,15 @@
 </head>
 <body>
 
+
+    <div class="text-center">
+        <h2>Terima Kasih</h2>
+        <p>
+            Terima Kasih Berbelanja Di {{ $appSetting->website_name ?? "PIXELPOP" }}
+            <br>
+            Your order items and details are provided below
+        </p>
+    </div>
     <table class="order-details">
         <thead>
             <tr>
