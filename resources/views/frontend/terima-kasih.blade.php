@@ -9,7 +9,9 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="p-4 shadow bg-white">
-                        <h2>logo</h2>
+                        <div class="mb-3">
+                            <img src="{{ asset('assets/image/Welcome.png') }}" style="width: 400px; height: 200px;" alt="">
+                        </div>
                         <h4>Terima Kasih Telah Membeli Product Kami</h4>
                         <a href="{{ url('collections') }}" class="btn btn-primary">Belanja Sekarang</a>
                     </div>

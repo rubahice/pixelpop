@@ -22,8 +22,8 @@
     <script src="https://kit.fontawesome.com/4c001451ce.js" crossorigin="anonymous"></script>
 
     <!-- Logo -->
-    <link rel="logo" href="{{ asset('assets/image/pixelpop.png') }}" />
-    {{-- <link rel="shortcut icon" href="{{ asset('admin/images/PIXELPOP.png') }}" /> --}}
+    {{-- <link rel="logo" href="{{ asset('assets/image/pixelpop.png') }}" /> --}}
+    <link rel="shortcut icon" href="{{ asset('admin/images/PIXELPOP.png') }}" />
 
     <!-- links -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">

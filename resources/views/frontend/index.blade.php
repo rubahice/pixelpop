@@ -16,14 +16,14 @@
             <div class="carousel-caption d-none d-md-block">
                 <div class="custom-carousel-content">
                     <!-- slide title dan slide desc opsional -->
-                    {{-- <h1>
-                        {!! $sliderItem->title !!}
+                    <h1>
+                        {!! $sliderItem->title ?? $sliderItem->title !!}
                     </h1>
                     <p>
-                        {!! $sliderItem->description !!}
-                    </p> --}}
+                        {!! $sliderItem->description ?? $sliderItem->description !!}
+                    </p>
                     <div>
-                        <a href="#" class="btn btn-slider">
+                        <a href="{{ url('/collections') }}" class="btn btn-slider">
                             Get Now
                         </a>
                     </div>

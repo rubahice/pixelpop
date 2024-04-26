@@ -8,6 +8,10 @@
             <div class="alert alert-success">{{ session('message') }}</div>
         @endif
 
+        @error('title')
+        {{$message}}
+        @enderror
+
         <div class="card">
             <div class="card-header">
                 <h3>Add Slider

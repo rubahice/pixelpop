@@ -80,10 +80,11 @@ class CheckoutShow extends Component
             Cart::where('user_id', auth()->user()->id)->delete();
 
             try{
+                // sukses terkirim
                 $order = Order::findOrFail($codOrder->id);
                 Mail::to("$order->email")->send(new PlaceOrderMailable($order));
             }catch(\Exception $e){
-
+                // ada yang salah
             }
 
             $this->alert('success', 'sukses', [
